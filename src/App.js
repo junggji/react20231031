@@ -1,18 +1,15 @@
-import aaggee, { city } from "./component/MyElem";
-import Yourbox, { country, person } from "./component/MyBox";
+import MyBox, { address } from "./component/MyBox";
+import MyElem, { address as myAddress } from "./component/MyElem";
 
-// deafult import는 이름 바꿔도 상관없다.
+// as 로 named export 값을 import할때 별칭을 줄 수 있음 --- 중복된 이름들의 충돌을 피하기 위해
 
 function App() {
   return (
     <>
-      <h1>{city}</h1>
-      <h1>{aaggee}</h1>
-      <Yourbox />
-      <h1>
-        {person.age}, {person.name}
-      </h1>
-      <h1>{country}</h1>
+      <h1>{address}</h1>
+      <h1>{myAddress}</h1>
+      <MyElem />
+      <MyBox />
     </>
   );
 }
