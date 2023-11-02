@@ -1,115 +1,20 @@
-import {
-  Box,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  SimpleGrid,
-  Heading,
-  Button,
-  Table,
-  Thead,
-  Th,
-  Tr,
-  Td,
-  Tbody,
-} from "@chakra-ui/react";
+import { Box, Center, Circle, Square } from "@chakra-ui/react";
+import { ChatIcon, PhoneIcon, UnlockIcon } from "@chakra-ui/icons";
 
 function App() {
   return (
     <>
-      <SimpleGrid columns={1} gap={5}>
-        <Box>
-          {/*Table>Thead>Tr>Th*4>lorem1^^^Tbody>Tr*5>Td*4>lorem1*/}
-          <Table>
-            <Thead>
-              <Tr>
-                <Th>Lorem.</Th>
-                <Th>Dolorem!</Th>
-                <Th>Totam.</Th>
-                <Th>Itaque.</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Culpa.</Td>
-                <Td>Fugit.</Td>
-                <Td>Autem!</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Repellendus.</Td>
-                <Td>Dignissimos?</Td>
-                <Td>Quo?</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Excepturi.</Td>
-                <Td>Omnis!</Td>
-                <Td>Adipisci?</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Harum?</Td>
-                <Td>Id?</Td>
-                <Td>Quam!</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Temporibus.</Td>
-                <Td>Hic?</Td>
-                <Td>Provident?</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </Box>
+      <Center bg={"red"} h={"200px"}>
+        <Square bg={"blue"} w={"100px"} h={"100px"}>
+          <ChatIcon />
+        </Square>
+      </Center>
 
-        <Box>
-          <Table variant="striped" colorScheme="red" size={"lg"}>
-            <Thead>
-              <Tr>
-                <Th>Lorem.</Th>
-                <Th>Odit?</Th>
-                <Th>Aspernatur.</Th>
-                <Th>Explicabo.</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Quo?</Td>
-                <Td>Facilis.</Td>
-                <Td>Architecto.</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Reiciendis.</Td>
-                <Td>Porro.</Td>
-                <Td>Ut.</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Eaque!</Td>
-                <Td>Perspiciatis.</Td>
-                <Td>Tempore.</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>A?</Td>
-                <Td>Iure!</Td>
-                <Td>Amet.</Td>
-              </Tr>
-              <Tr>
-                <Td>Lorem.</Td>
-                <Td>Est!</Td>
-                <Td>Suscipit!</Td>
-                <Td>Tempore!</Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </Box>
-      </SimpleGrid>
+      <Center bg={"red.200"} h={"200px"}>
+        <Circle bg={"blue.200"} w={"100px"} h={"100px"}>
+          <UnlockIcon />
+        </Circle>
+      </Center>
     </>
   );
 }
