@@ -1,20 +1,46 @@
-import { Box, Center, Circle, Square } from "@chakra-ui/react";
-import { ChatIcon, PhoneIcon, UnlockIcon } from "@chakra-ui/icons";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
 
 function App() {
+  const { isOpen, onOpen, onClose } = useDisclosure(); // 값을 구조분해할당한 상태
   return (
     <>
-      <Center bg={"red"} h={"200px"}>
-        <Square bg={"blue"} w={"100px"} h={"100px"}>
-          <ChatIcon />
-        </Square>
-      </Center>
+      <Button onClick={onOpen}>모달 열기</Button>
 
-      <Center bg={"red.200"} h={"200px"}>
-        <Circle bg={"blue.200"} w={"100px"} h={"100px"}>
-          <UnlockIcon />
-        </Circle>
-      </Center>
+      <Modal
+        closeOnOverlayClick={false}
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        motionPreset="slideInBottom"
+      >
+        {/* 뒤 어둡게 */}
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>모달의 제목</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+            consequatur eveniet ipsa ipsam iusto laudantium magni placeat
+            possimus quasi repudiandae rerum sint, tempora! Atque aut commodi
+            ipsam, quis sequi veniam.
+          </ModalBody>
+          <ModalFooter>
+            <Button colorScheme="blue" onClick={onClose}>
+              닫기
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </>
   );
 }
