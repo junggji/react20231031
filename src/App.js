@@ -1,29 +1,32 @@
 import React from "react";
-import { Button } from "@chakra-ui/react";
+import { Box, Button, Center } from "@chakra-ui/react";
 
 function App(props) {
   function handleClick(e) {
-    // 브라우저가 기본으로 해야하는 기능을 취소함
-    e.preventDefault();
-    console.log("다른 일을 시킴");
+    // event bubbling(바깥에있는 element까지 전달실행 되는것??) 막는 메소드
+    e.stopPropagation();
+    console.log(e.target.className);
   }
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("다른일을 시킴");
-  }
-
   return (
-    <div>
-      <a href="https://www.naver.com" onClick={handleClick}>
-        네이버
-      </a>
-      <div>
-        <form action="https://search.daum.net/search" onSubmit={handleSubmit}>
-          <input type="text" name="q" />
-          <button>검색</button>
-        </form>
-      </div>
-    </div>
+    <Center
+      onClick={handleClick}
+      className="outerBox"
+      w={"200px"}
+      h="200px"
+      bg={"gold"}
+    >
+      <Center
+        onClick={handleClick}
+        className="innerBox"
+        w={"100px"}
+        h={"100px"}
+        bg={"blue"}
+      >
+        <Button onClick={handleClick} className="button" colorScheme="yellow">
+          Button
+        </Button>
+      </Center>
+    </Center>
   );
 }
 
