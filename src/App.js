@@ -1,36 +1,43 @@
-import React, { useState } from "react";
-import { Box, Button, Text } from "@chakra-ui/react";
+import React from "react";
+import { Box, List, ListItem } from "@chakra-ui/react";
 
 function App(props) {
-  // set... 메소드로 상태 변경할 수 있음
-  // 상태가 같은 지 아닌 지 판단해서 re-render 결정함
-  // ***re-render시 전체 코드가 다시 실행된다****
-  const [number, setNumber] = useState(0);
-  const [numberObject, setNumberObject] = useState({ number: 0 }); // 객체
+  const arr = ["pizza", "돈까스", "햄버거", "김치찌개"];
+  const arr2 = ["손흥민", "이강인", "김민재"];
+  const arr3 = ["라떼", "에스프레스", "카푸치노"];
+  const arr4 = [
+    { id: 0, name: "라떼" },
+    { id: 2, name: "에스프레소" },
+    { id: 3, name: "카푸치노" },
+  ];
 
-  function handleNumberObjectChange() {
-    // // 이렇게 사용하면 안됨
-    // numberObject.number = numberObject.number + 1; // property는 바뀌었지만 객체는 바뀐것이 아님(참조값은 같으니)
-    // setNumberObject(numberObject); // 같은 객체가들어온 것이라 변경되지 않는다.
-
-    // ****js에서 primitive 타입 -> Boolean, String, Number타입 세가지, 나머지는 참조타입****
-
-    // 객체는 복사해서 써야함
-    const newNumberObject = { ...numberObject }; // 객체를 복사하는 코드 ... (참조값 다름)
-    newNumberObject.number = newNumberObject.number + 1;
-    setNumberObject(newNumberObject);
-  }
+  // map method
+  // key값은 유일한 값으로(react가 쓰는 값)
+  // -> index로 주는 것은 권장X(버그유발)
+  // id -> primary key값으로 주는것이 좋다!
+  const listItems = arr.map((item, index) => (
+    <ListItem key={index}>{item}</ListItem>
+  ));
+  const listPlayers = arr2.map((player, index) => (
+    <ListItem key={index}>{player}</ListItem>
+  ));
 
   return (
     <div>
       <Box>
-        <Button onClick={() => setNumber(number + 1)}>number 변경</Button>
-        <Text>{number}</Text>
+        <List>{listItems}</List>
       </Box>
 
       <Box>
-        <Button onClick={handleNumberObjectChange}>number 객체 변경</Button>
-        <Text>{numberObject.number}</Text>
+        <List>{listPlayers}</List>
+      </Box>
+
+      <Box>
+        <List>
+          {arr3.map((e, i) => (
+            <ListItem key={i}>{e}</ListItem>
+          ))}
+        </List>
       </Box>
     </div>
   );
