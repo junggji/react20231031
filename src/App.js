@@ -22,7 +22,7 @@ function App(props) {
   // 1. context 만들기 : creatContext();
   // component 밖에서 만들어야함
   // 2. context에 state 넣기 (제일 조상 component에)
-  //    : <Context.Provider value={stat}></Context.Provider>
+  //    : <Context.Provider value={state}></Context.Provider>
   // 3. tree안에 context 사용하기
 
   return (
