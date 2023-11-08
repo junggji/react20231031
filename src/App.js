@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { Box, Select, Text } from "@chakra-ui/react";
+import { Box, Select, Spinner, Text } from "@chakra-ui/react";
 import axios from "axios";
 
 function App(props) {
   const [customerId, setCustomerId] = useState(0);
   const [customer, setCustomer] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    // 메소드가 실행되면 loading중이라는 코드
+    setIsLoading(true);
     axios
       .get("/api/main1/sub4?id=" + customerId)
       .then((response) => response.data)
       .then((data) => setCustomer(data))
-      .catch((error) => console.log(error))
-      .finally(() => console.log("끝!!"));
+      .catch((error) => setCustomer(null))
+      .finally(() => setIsLoading(false));
+    // 메소드 다 실행되면(데이터 표시되면) loading이 끝났다는 코드
   }, [customerId]);
 
   return (
@@ -33,7 +37,18 @@ function App(props) {
         <option value="10">10</option>
       </Select>
       <Box>
-        <Text>고객 이름 : {customer.cname}</Text>
+        {/* 조회중이면 spinner(로딩 표시) */}
+        {isLoading && <Spinner />}
+
+        {isLoading || (
+          <>
+            {customer === null ? (
+              <Text>조회한 고객이 없습니다. 다른 번호를 선택해주세요.</Text>
+            ) : (
+              <Text>고객 이름 : {customer.cname}</Text>
+            )}
+          </>
+        )}
       </Box>
     </div>
   );
